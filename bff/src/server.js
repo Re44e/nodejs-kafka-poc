@@ -1,7 +1,7 @@
 import express from 'express';
 import { Kafka, logLevel } from 'kafkajs';
 
-import routes from './routes';
+import routes from '../src/routes';
 
 const app = express();
 

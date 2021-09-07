@@ -3,10 +3,10 @@ import { CompressionTypes } from 'kafkajs';
 
 const routes = express.Router();
 
-routes.post('/cvc', async (req, res) => {
+routes.post('/health', async (req, res) => {
   const message = {
-    service: { id: 1, name: 'cvc-health' },
-    health: 'ok'
+    service: { id: 1, name: 'health-notification' },
+    status: 'ok'
   };
 
   await req.producer.send({
@@ -16,8 +16,6 @@ routes.post('/cvc', async (req, res) => {
       { value: JSON.stringify(message) }
     ],
   });
-
-  await req.producer.disconnect();
   return res.json({ ok: true });
 });
 
